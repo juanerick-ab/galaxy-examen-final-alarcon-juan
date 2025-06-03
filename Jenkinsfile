@@ -15,7 +15,7 @@ pipeline {
             steps {
                 script{
                     def scannerHome = tool 'scanner-default'
-                    // echo ${scannerHome}
+                    echo ${scannerHome}
                     // withSonarQubeEnv('sonar-server') {
                     //     sh "${scannerHome}/bin/sonar-scanner \
                     //     -Dsonar.projectKey=labmaven01 \
