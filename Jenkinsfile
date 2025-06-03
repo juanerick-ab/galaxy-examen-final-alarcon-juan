@@ -2,21 +2,17 @@ pipeline {
     agent any
 
     stages {
-        stage('Inicio') {
-            steps {
-                echo '🚀 Iniciando pipeline de prueba...'
+        stage('Build') {
+            agent {
+                docker { image 'maven:3.6.3-openjdk-11-slim' }
             }
-        }
-
-        stage('Verificación') {
             steps {
-                echo '✅ Jenkins está funcionando correctamente.'
+                sh 'mvn package'
             }
-        }
-
-        stage('Final') {
-            steps {
-                echo '🎉 Pipeline de prueba finalizado con éxito.'
+            post{
+                success {
+                    archiveArtifacts artifacts: 'target/labmaven-*.jar', fingerprint: true, onlyIfSuccessful: true
+                }
             }
         }
     }
