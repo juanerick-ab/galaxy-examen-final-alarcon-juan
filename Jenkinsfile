@@ -61,5 +61,12 @@ pipeline {
                     }
                 }
             }
+            stage('Test Run Container') {
+                steps {
+                    script {
+                        sh 'docker ps'
+                    }
+                }
+            }
         }
 }
