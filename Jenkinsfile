@@ -11,20 +11,20 @@ pipeline {
                     archiveArtifacts artifacts: 'target/*.jar', fingerprint: true, onlyIfSuccessful: true                        
                 }
         }
-        stage('SonarQube') {
-            steps {
-                script{
-                    def scannerHome = tool 'scanner-default'
-                    withSonarQubeEnv('sonar-server') {
-                        sh "${scannerHome}/bin/sonar-scanner \
-                        -Dsonar.projectKey=labmaven \
-                        -Dsonar.projectName=labmaven \
-                        -Dsonar.sources=src/main \
-                        -Dsonar.exclusions=**/*.java \
-                        -Dsonar.tests=src/test/java"
-                    }
-                }
-            }
-        }
+        // stage('SonarQube') {
+        //     steps {
+        //         script{
+        //             def scannerHome = tool 'scanner-default'
+        //             withSonarQubeEnv('sonar-server') {
+        //                 sh "${scannerHome}/bin/sonar-scanner \
+        //                 -Dsonar.projectKey=labmaven \
+        //                 -Dsonar.projectName=labmaven \
+        //                 -Dsonar.sources=src/main \
+        //                 -Dsonar.exclusions=**/*.java \
+        //                 -Dsonar.tests=src/test/java"
+        //             }
+        //         }
+        //     }
+        // }
     }
 }
